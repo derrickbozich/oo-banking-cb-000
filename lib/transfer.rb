@@ -28,6 +28,7 @@ class Transfer
     if @status == "complete"
       @sender.deposit(amount)
       @receiver.balance -= amount
+      @status = "reversed"
     end
 
   end
