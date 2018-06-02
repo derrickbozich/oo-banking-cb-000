@@ -74,7 +74,9 @@ broke_boi = BankAccount.new("Broke Boi")
 gertrude = BankAccount.new("Gertrude")
 transfer = Transfer.new(broke_boi, gertrude, 5000)
 transfer.execute_transaction
-transfer.status
+transfer2 = Transfer.new(broke_boi, gertrude, 5000)
+transfer2.execute_transaction
+transfer2.status
 
 broke_boi.balance
 
