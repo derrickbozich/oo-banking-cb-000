@@ -19,7 +19,6 @@ class Transfer
       if valid? == false
         @status = "rejected"
         "Transaction rejected. Please check your account balance."
-      #   @status = "rejected"
       else
       @sender.balance -= amount
       @receiver.deposit(amount)
@@ -73,7 +72,9 @@ end
 
 broke_boi = BankAccount.new("Broke Boi")
 gertrude = BankAccount.new("Gertrude")
-transfer = Transfer.new(broke_boi, gertrude, 50)
+transfer = Transfer.new(broke_boi, gertrude, 5000)
+transfer.execute_transaction
+transfer.status
 
 broke_boi.balance
 
