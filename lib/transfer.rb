@@ -15,24 +15,17 @@ class Transfer
   end
 
   def execute_transaction
-    # if @status == "pending"
-    #   if valid? == false
-    #     @status = "rejected"
-    #     puts @status
-    # 
-    # 
-    #   # "Transaction rejected. Please check your account balance."
-    #   #   @status = "rejected"
-    #   else
-    #   @sender.balance -= amount
-    #   @receiver.deposit(amount)
-    #   @status = "complete"
-    # end
-    # end
-    @sender.balance -= amount
-    @receiver.deposit(amount)
-    
-
+    if @status == "pending"
+      if valid? == false
+        @status = "rejected"
+        "Transaction rejected. Please check your account balance."
+      #   @status = "rejected"
+      else
+      @sender.balance -= amount
+      @receiver.deposit(amount)
+      @status = "complete"
+      end
+    end
   end
 
   def reverse_transfer
@@ -80,6 +73,16 @@ end
 
 broke_boi = BankAccount.new("Broke Boi")
 gertrude = BankAccount.new("Gertrude")
-transfer = Transfer.new(broke_boi, gertrude, 5000)
+transfer = Transfer.new(broke_boi, gertrude, 50)
 
 broke_boi.balance
+
+sender = transfer.sender
+receiver = transfer.receiver
+
+sender.balance -= 50
+
+
+amount = 100
+sender.balance -= amount
+receiver.deposit(amount)
