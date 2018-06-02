@@ -1,3 +1,5 @@
+require 'pry'
+
 class Transfer
   attr_accessor :status, :amount, :sender, :receiver
 
@@ -16,6 +18,7 @@ class Transfer
     if @status == "pending"
       if valid? == false
         @status = "rejected"
+        puts @status
 
 
       # "Transaction rejected. Please check your account balance."
@@ -40,38 +43,38 @@ class Transfer
 
 end
 
-# class BankAccount
-#   attr_accessor :balance, :status
-#   attr_reader :name
-#
-#   def initialize(name)
-#     @name = name
-#     @balance = 1000
-#     @status = "open"
-#   end
-#
-#   def deposit(amount)
-#     @balance += amount
-#   end
-#
-#   def display_balance
-#     "Your balance is $#{@balance}."
-#   end
-#
-#   def valid?
-#     if @status == "open" && @balance > 0
-#       true
-#     else
-#       false
-#     end
-#   end
-#
-#   def close_account
-#     @status = "closed"
-#   end
-#
-# end
-#
-# broke_boi = BankAccount.new("Broke Boi")
-# gertrude = BankAccount.new("Gertrude")
-# transfer = Transfer.new(broke_boi, gertrude, 50)
+class BankAccount
+  attr_accessor :balance, :status
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+    @balance = 1000
+    @status = "open"
+  end
+
+  def deposit(amount)
+    @balance += amount
+  end
+
+  def display_balance
+    "Your balance is $#{@balance}."
+  end
+
+  def valid?
+    if @status == "open" && @balance > 0
+      true
+    else
+      false
+    end
+  end
+
+  def close_account
+    @status = "closed"
+  end
+
+end
+
+broke_boi = BankAccount.new("Broke Boi")
+gertrude = BankAccount.new("Gertrude")
+transfer = Transfer.new(broke_boi, gertrude, 50)
